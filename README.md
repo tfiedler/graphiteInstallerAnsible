@@ -12,3 +12,7 @@ Main config:
 
 July 18, 2016
 * main graphite plus prereqs and meta all install cleanly on ubuntu 14.04 LTS 
+July 19, 2016
+* Supervisor installs cleanly
+* Supervisor /etc dirs created
+* init default supervisor config created
