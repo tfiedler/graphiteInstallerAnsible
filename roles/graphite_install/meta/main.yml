@@ -1,0 +1,5 @@
+---
+dependencies:
+  - { role: graphite_prereq }
+  - { role: gunicorn_install }
+  - { role: supervisord_install }

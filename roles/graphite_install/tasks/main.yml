@@ -1,0 +1,7 @@
+---
+- name: Main graphite installer
+  pip:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ graphiteInstalls }}"
+

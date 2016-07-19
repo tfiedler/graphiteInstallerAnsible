@@ -1,0 +1,5 @@
+---
+- name: Install Supervisord
+  pip:
+    name: "supervisor"
+    state: latest

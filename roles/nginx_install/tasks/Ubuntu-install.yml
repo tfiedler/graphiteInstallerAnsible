@@ -1,0 +1,11 @@
+---
+- name: insure python-apt is installed
+  package:
+    name: python-apt
+    state: latest
+
+- name: install nginx repo from the nginx repo 
+  apt:
+    name: nginx
+    state: latest
+    update_cache: yes

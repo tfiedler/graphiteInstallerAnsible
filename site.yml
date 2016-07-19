@@ -1,0 +1,16 @@
+---
+- hosts: all
+  user: ubuntu
+  become: true
+  roles:
+    - { role: graphite_install, tags: graphite_main }
+    - { role: graphite_configure, tage: c_graphite }
+    - { role: supervisord_install, tags: c_install }
+    - { role: supervisord_configure, tags: c_supervisord }
+    - { role: gunicorn_install, tags: i_gunicorn }
+    - { role: gunicorn_configure, tags: c_gunicorn }
+    - { role: nginx_install, tags: i_nginx }
+    - { role: nginx_configure, tags: c_nginx }
+    - { role: nginx_vhost, tags: vhost }
+    - { role: graphite_prereq, tags: prereqs }
+  
