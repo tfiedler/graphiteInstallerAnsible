@@ -1,0 +1,17 @@
+---
+- name: Create the directories needed for supervisor
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0750
+    owner: root
+    group: root
+  with_items:
+    - "/etc/supervisor"
+    - "/etc/supervisor/conf.d"
+
+- name: Create a default supervisord config file.
+  shell: "/usr/local/bin/echo_supervisord_conf > /etc/supervisor/supervisord.conf"
+  args: 
+    creates: "/etc/supervisor/supervisord.conf"
+    executable: "/bin/bash"
