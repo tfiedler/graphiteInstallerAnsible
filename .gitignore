@@ -1,3 +1,7 @@
 scripts/*
 !scripts/README
 group_vars/*.yml
+!group_vars/README
+host_vars/*.yml
+!host_vars/README
+*.retry
