@@ -12,7 +12,13 @@ Main config:
 
 July 18, 2016
 * main graphite plus prereqs and meta all install cleanly on ubuntu 14.04 LTS 
+
 July 19, 2016
 * Supervisor installs cleanly
 * Supervisor /etc dirs created
 * init default supervisor config created
+
+July 20, 2016
+* Fixed a bunch of typos
+* ec2 role is working
+* started working on supervisor config
