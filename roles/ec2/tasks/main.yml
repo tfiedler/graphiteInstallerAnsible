@@ -6,10 +6,10 @@
     wait: yes
     group: "{{ ec2group }}"
     count: 1
-    vpc_subnet_id: "{{ ec2vpc }}"
+    vpc_subnet_id: "{{ ec2subnet }}"
     assign_public_ip: yes
     state: "{{ ec2state }}"
     key_name: "{{ ec2key }}"
-    reigion: "{{ ec2reigion }}"
+    region: "{{ ec2region }}"
     
    

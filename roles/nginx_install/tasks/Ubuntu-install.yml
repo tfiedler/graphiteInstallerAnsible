@@ -5,7 +5,7 @@
     state: latest
 
 - name: install nginx repo from the nginx repo 
-  apt:
+  package:
     name: nginx
     state: latest
     update_cache: yes
