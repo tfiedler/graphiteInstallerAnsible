@@ -22,3 +22,8 @@ July 20, 2016
 * Fixed a bunch of typos
 * ec2 role is working
 * started working on supervisor config
+
+July 27, 2016
+* Fixed ec2 provision - This now works w/o issues
+* Supervisor config completed
+* Supervisor enabled and starts
