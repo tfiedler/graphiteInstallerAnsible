@@ -9,9 +9,32 @@
   with_items:
     - "/etc/supervisor"
     - "/etc/supervisor/conf.d"
+    - "/var/log/supervisor"
 
-- name: Create a default supervisord config file.
-  shell: "/usr/local/bin/echo_supervisord_conf > /etc/supervisor/supervisord.conf"
-  args: 
-    creates: "/etc/supervisor/supervisord.conf"
-    executable: "/bin/bash"
+#- name: Create a default supervisord config file.
+#  shell: "/usr/local/bin/echo_supervisord_conf > /etc/supervisor/supervisord.conf"
+#  args: 
+#    creates: "/etc/supervisor/supervisord.conf"
+#    executable: "/bin/bash"
+
+- name: Copy init file to correct location
+  copy:
+    src="supervisord"
+    dest=/etc/init.d/supervisord
+    owner="root"
+    group="root"
+    mode="0750"
+
+- name: Copy supervisord config file to correct location
+  copy:
+    src="supervisor.conf"
+    dest=/etc/supervisor/supervisord.conf
+    owner="root"
+    group="root"
+    mode="0640"
+
+- name: Enable and start the supervisord service
+  service: 
+    name: supervisord
+    enabled: yes
+    state: started

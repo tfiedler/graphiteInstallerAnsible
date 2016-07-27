@@ -1,0 +1,13 @@
+---
+- ec2_facts:
+
+- ec2:
+    wait: yes
+    count: 1
+    state: "absent"
+    region: "{{ ec2region }}"
+    instance_ids: "{{item}}"
+  with_items: hostvars[inventory_hostname]['ansible_ec2_instance_id']
+  when: hostvars[inventory_hostname]['ansible_ec2_instance_id'] 
+    
+   

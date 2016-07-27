@@ -5,10 +5,12 @@
     image: "{{ ec2ami }}"
     wait: yes
     group: "{{ ec2group }}"
-    count: 1
+    instance_tags: 
+        name: "{{ ec2nametag }}"
+    count: "{{ ec2count }}"
+    state: "{{ ec2state }}"
     vpc_subnet_id: "{{ ec2subnet }}"
     assign_public_ip: yes
-    state: "{{ ec2state }}"
     key_name: "{{ ec2key }}"
     region: "{{ ec2region }}"
     
