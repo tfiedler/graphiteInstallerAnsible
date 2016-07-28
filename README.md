@@ -27,3 +27,8 @@ July 27, 2016
 * Fixed ec2 provision - This now works w/o issues
 * Supervisor config completed
 * Supervisor enabled and starts
+
+July 28, 2016
+* Removed a duplicate key in ec2 role
+
+
