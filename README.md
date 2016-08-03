@@ -34,3 +34,4 @@ July 28, 2016
 August 2, 2016
 * Moved to a single graphite role.
 * Started carbon config
+* Added carbon user | group
