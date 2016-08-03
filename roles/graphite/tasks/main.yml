@@ -24,6 +24,19 @@
   with_items:
     - "{{ prereqs }}"
 
+- name: create carbon group
+  group: 
+    name: carbon 
+    state: present
+
+- name: create carbon user
+  user:
+    name: carbon
+    state: present
+    createhome: yes
+    group: carbon
+
+
 # GRAPHITE
 
 - name: Main graphite installer
@@ -73,12 +86,22 @@
     enabled: yes
     state: started
 
-# CARBON CONFIGURE
+# CARBON ( ETC... ) CONFIGURE
 
 - name: Sets up carbon configuration files
   shell: /bin/cp /usr/local/conf/carbon.conf.example /usr/local/conf/carbon.conf
   args:
     creates: /usr/local/conf/carbon.conf
+
+- name: graphite webapp wsgi config
+  shell: /bin/cp /usr/local/conf/graphite.wsgi.example /usr/local/conf/graphite.wsgi
+  args: 
+    creates: /usr/local/conf/graphite.wsgi
+
+- name: graphite whisper storage schema conf
+  shell: /bin/cp /usr/local/conf/storage-schemas.conf.example /usr/local/conf/storage-schemas.conf
+  args: 
+    creates: /usr/local/conf/storage-schemas.conf
 
 # NGINX
 
