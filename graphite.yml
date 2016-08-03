@@ -3,16 +3,4 @@
   user: ubuntu
   become: true
   roles:
-    # Use this to install
-    - { role: graphite_install, tags: install }
-    # Use this to configure
-    - { role: graphite_configure, tage: configure }
-    - { role: supervisor_configure, tags: c_supervisor }
-    - { role: gunicorn_configure, tags: c_gunicorn }
-    - { role: nginx_configure, tags: c_nginx }
-     # Uncomment to use these individually 
-#    - { role: graphite_prereq, tags: prereqs }
-#    - { role: nginx_install, tags: i_nginx }
-#    - { role: gunicorn_install, tags: i_gunicorn }
-#    - { role: supervisor_install, tags: i_supervisor }
-  
+    - { role: graphite }

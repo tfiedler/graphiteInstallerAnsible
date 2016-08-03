@@ -1,4 +1,5 @@
 ---
+graphiteInstalls: [ 'https://github.com/graphite-project/ceres/tarball/master', 'whisper', 'carbon', 'graphite-web' ]
 pipPrereqs: ['python-pip', 'python-virtualenv']
 pipInstalls: ['pip', 'virtualenv', 'pytz']
 prereqs: ['python-dev', 'python-cairo', 'python-django', 'python-django-tagging', 'fontconfig', 'python-fontconfig', 'memcached', 'python-memcache']

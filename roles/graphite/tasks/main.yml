@@ -1,0 +1,94 @@
+---
+
+# PREREQS
+
+- name: install pip prereqs
+  package:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  with_items:
+    - "{{ pipPrereqs }}"
+
+- name: install / upgrade pip stuff
+  pip:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - "{{ pipInstalls }}"
+
+- name: finish prereq installs
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - "{{ prereqs }}"
+
+# GRAPHITE
+
+- name: Main graphite installer
+  pip:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ graphiteInstalls }}"
+
+# SUPERVISOR
+
+- name: Install Supervisor
+  pip:
+    name: "supervisor"
+    state: latest
+
+- name: Create the directories needed for supervisor
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0750
+    owner: root
+    group: root
+  with_items:
+    - "/etc/supervisor"
+    - "/etc/supervisor/conf.d"
+    - "/var/log/supervisor"
+
+- name: Copy init file to correct location
+  copy:
+    src="supervisord"
+    dest=/etc/init.d/supervisord
+    owner="root"
+    group="root"
+    mode="0750"
+
+- name: Copy supervisord config file to correct location
+  copy:
+    src="supervisor.conf"
+    dest=/etc/supervisor/supervisord.conf
+    owner="root"
+    group="root"
+    mode="0640"
+
+- name: Enable and start the supervisord service
+  service:
+    name: supervisord
+    enabled: yes
+    state: started
+
+# CARBON CONFIGURE
+
+- name: Sets up carbon configuration files
+  shell: /bin/cp /usr/local/conf/carbon.conf.example /usr/local/conf/carbon.conf
+  args:
+    creates: /usr/local/conf/carbon.conf
+
+# NGINX
+
+- name: insure python-apt is installed
+  package:
+    name: python-apt
+    state: latest
+
+- name: install nginx repo from the nginx repo
+  package:
+    name: nginx
+    state: latest
+    update_cache: yes
