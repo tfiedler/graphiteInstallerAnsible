@@ -31,4 +31,6 @@ July 27, 2016
 July 28, 2016
 * Removed a duplicate key in ec2 role
 
-
+August 2, 2016
+* Moved to a single graphite role.
+* Started carbon config
